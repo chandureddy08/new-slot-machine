@@ -36,17 +36,21 @@ def get_bet():
         amount = input("What would you like to bet? $")
         if amount.isdigit():
             amount = int(amount)
-
-
-
-
+            if MIN_BET <= amount <= MAX_BET:
+                return amount
+            else:
+                print(f"Amount must be between ${MIN_BET} - ${MAX_BET}")
+        else:
+            print("Please enter a number")
 
 
 
 def main():
     balance = deposit()
     lines = get_number_of_lines()
-    print(balance,lines)
+    bet = get_bet()
+    total_bet = bet * lines
+    print(f"You are betting ${bet} and {lines} lines. Total bet amount is ${total_bet}")
 
 
 
